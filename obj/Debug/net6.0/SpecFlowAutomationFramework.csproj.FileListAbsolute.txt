@@ -181,3 +181,4 @@ C:\Users\necir\source\repos\SpecFlowAutomationFramework\obj\Debug\net6.0\SpecFlo
 C:\Users\necir\source\repos\SpecFlowAutomationFramework\obj\Debug\net6.0\ref\SpecFlowAutomationFramework.dll
 C:\Users\necir\source\repos\SpecFlowAutomationFramework\bin\Debug\net6.0\appsettings.json
 C:\Users\necir\source\repos\SpecFlowAutomationFramework\obj\Debug\net6.0\SpecFlowAutomationFramework.sourcelink.json
+C:\Users\necir\source\repos\SpecFlowAutomationFramework\bin\Debug\net6.0\TestResults\index.html
