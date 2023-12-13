@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using AventStack.ExtentReports.Gherkin.Model;
 using System;
 using System.IO;
-using TechTalk.SpecFlow;
 
 namespace SpecFlowAutomationFramework.Utility
 {
@@ -19,10 +18,6 @@ namespace SpecFlowAutomationFramework.Utility
 
         public static void ExtentReportInit()
         {
-            // Use a timestamp to create a unique file name for each report
-            string reportFileName = "TestReport_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".html";
-            var reportFilePath = Path.Combine(testResultPath, reportFileName);
-
             var reporter = new ExtentSparkReporter(testResultPath);
             reporter.Config.DocumentTitle = "Automation Status Report";
             reporter.Config.ReportName = "Automation Status Report";

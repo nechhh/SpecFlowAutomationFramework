@@ -1,7 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
 using BoDi;
-using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using Microsoft.Extensions.Configuration;
 using SpecFlowAutomationFramework.Utility;
@@ -10,7 +9,7 @@ using System.IO;  // Ensure System.IO is included for Directory class
 namespace SpecFlowAutomationFramework
 {
     [Binding]
-    public class Hooks 
+    public class Hooks
     {
         private readonly IObjectContainer _container;
         private static IConfiguration? _configuration;
@@ -43,41 +42,23 @@ namespace SpecFlowAutomationFramework
             _container.RegisterInstanceAs<IWebDriver>(driver);
 
             // The feature name can be manually specified or derived in a different way
-            string featureName = scenarioContext.ScenarioInfo.Title;
+            string featureName = "YourFeatureName";
             ExtentReport.StartFeature(featureName);
             ExtentReport.StartScenario(scenarioContext.ScenarioInfo.Title);
         }
 
         [AfterScenario]
         public void AfterScenario()
-        { 
-             //current method
+        {
             var driver = _container.Resolve<IWebDriver>();
             driver?.Quit();
             driver?.Dispose();
         }
-        [AfterTestRun]
-        public static void AfterTestRun()
-        {
-            ExtentReport.ExtentReportTearDown();
-        }
 
-
-        //This method logs each step's outcome and attaches a screenshot in case of a failure.
-        //Remember to adjust it based on your specific needs and test structure.
         [AfterStep]
         public void InsertReportingSteps(ScenarioContext scenarioContext)
         {
-            if (scenarioContext.TestError == null)
-            {
-                ExtentReport.Log(Status.Pass, "Step Passed: " + scenarioContext.StepContext.StepInfo.Text);
-            }
-            else
-            {
-                var driver = _container.Resolve<IWebDriver>();
-                var screenshotPath = ExtentReport.AddScreenshot(driver, scenarioContext.ScenarioInfo.Title);
-                ExtentReport.Log(Status.Fail, $"Step Failed: {scenarioContext.StepContext.StepInfo.Text}. Error: {scenarioContext.TestError.Message}");
-            }
+            // Your existing AfterStep logic
         }
     }
 }

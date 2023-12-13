@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
-using SpecFlowAutomationFramework.Helpers;
-
+using NUnit.Framework; // Ensure you have NUnit framework for assertions
 
 [Binding]
 public class LoginFunctionalitiesStepDefinitions
@@ -23,31 +22,27 @@ public class LoginFunctionalitiesStepDefinitions
     {
         _driver.Navigate().GoToUrl(_configuration["SyntaxHRM:Url"]);
     }
-    [When(@"user enters valid email ""([^""]*)"" and valid password ""([^""]*)""")]
-    public void WhenUserEntersValidEmailAndValidPassword(string username, string password)
+
+    [When(@"user enters valid email and valid password")]
+    public void WhenUserEntersValidEmailAndValidPassword()
     {
-        CommonActions.EnterText(_driver, _loginPage.usernameTxBox, username);
-        CommonActions.EnterText(_driver, _loginPage.passwordTxBox, password);
+        string username = _configuration["SyntaxHRM:Username"];
+        string password = _configuration["SyntaxHRM:Password"];
+
+        _loginPage.EnterUsername(username);
+        _loginPage.EnterPassword(password);
     }
 
     [When(@"click on login button")]
     public void WhenClickOnLoginButton()
     {
-        // _loginPage.ClickLogin();
-        CommonActions.ClickElement(_driver, _loginPage.loginBtn);
+        _loginPage.ClickLogin();
     }
 
-    //[Then(@"user is logged in successfully into the application")]
-    //public void ThenUserIsLoggedInSuccessfullyIntoTheApplication()
-    //{
-    //    CommonAsserts.AssertElementPresent(_driver, _loginPage.welcomeMessage);
-    //}
-
-    [Then(@"user is logged in as ""([^""]*)"" successfully into the application")]
-    public void ThenUserIsLoggedInAsSuccessfullyIntoTheApplication(string user)
+    [Then(@"user is logged in successfully into the application")]
+    public void ThenUserIsLoggedInSuccessfullyIntoTheApplication()
     {
-        CommonAsserts.AssertElementText(_driver, _loginPage.welcomeMessage, user);
-        
+        // The AssertLoggedIn method now performs the assertion internally
+        _loginPage.AssertLoggedIn();
     }
-
 }

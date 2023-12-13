@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpecFlowAutomationFramework")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69074e4f7940bae140f7db53a6280a5392eb9e7d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77cb5ca874e7951713e9887fb216a573e23f21bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpecFlowAutomationFramework")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpecFlowAutomationFramework")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
