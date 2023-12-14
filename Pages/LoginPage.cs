@@ -1,13 +1,15 @@
 ﻿using OpenQA.Selenium;
+using SpecFlowAutomationFramework.Helpers;
 
 public class LoginPage
 {
     private IWebDriver driver;
 
     // Locators
-    private By usernameTxBox = By.XPath("//*[@id='txtUsername']");
-    private By passwordTxBox = By.XPath("//*[@id='txtPassword']");
-    private By loginBtn = By.XPath("//*[@id='btnLogin']");
+    // Updated locators with 'controlName'
+    private ByControlWrapper usernameTxBox = new ByControlWrapper(By.XPath("//*[@id='txtUsername']"), "Username TextBox");
+    private ByControlWrapper passwordTxBox = new ByControlWrapper(By.XPath("//*[@id='txtPassword']"), "password TextBox");
+    private ByControlWrapper loginBtn = new ByControlWrapper(By.XPath("//*[@id='btnLogin']"), "login button");
     private By welcomeMessage = By.XPath("//*[@id='welcome']"); // Example locator for welcome message
 
     // Constructor
@@ -16,32 +18,24 @@ public class LoginPage
         this.driver = driver;
     }
 
-    // Methods to interact with elements
+    // Methods to interact with elements using CommonActions
     public void EnterUsername(string username)
     {
-        driver.FindElement(usernameTxBox).SendKeys(username);
+        CommonActions.EnterText(driver, usernameTxBox, username);
     }
 
     public void EnterPassword(string password)
     {
-        driver.FindElement(passwordTxBox).SendKeys(password);
+        CommonActions.EnterText(driver, passwordTxBox, password);
     }
 
     public void ClickLogin()
     {
-        driver.FindElement(loginBtn).Click();
+        CommonActions.ClickElement(driver, loginBtn);
     }
 
-    public bool IsLoggedIn()
+    public void AssertLoggedIn()
     {
-        // Implement logic to verify login
-        try
-        {
-            return driver.FindElement(welcomeMessage).Displayed;
-        }
-        catch (NoSuchElementException)
-        {
-            return false;
-        }
+        CommonAsserts.AssertElementPresent(driver, welcomeMessage);
     }
 }

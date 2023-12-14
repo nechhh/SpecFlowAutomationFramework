@@ -42,7 +42,7 @@ public class LoginFunctionalitiesStepDefinitions
     [Then(@"user is logged in successfully into the application")]
     public void ThenUserIsLoggedInSuccessfullyIntoTheApplication()
     {
-        bool isLoggedIn = _loginPage.IsLoggedIn(); // Assuming IsLoggedIn() is a method you'll implement in LoginPage
-        Assert.IsTrue(isLoggedIn, "User is not logged in successfully.");
+        // The AssertLoggedIn method now performs the assertion internally
+        _loginPage.AssertLoggedIn();
     }
 }

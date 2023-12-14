@@ -1,2 +1,10 @@
+bin/
+obj/
 .vs/
+*.testlog
+*.tmp
+*.dll
+*.pdb
+*.json
+
 
