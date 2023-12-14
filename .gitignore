@@ -1,8 +1,10 @@
-[Bb]in/
-[Oo]bj/
+bin/
+obj/
 .vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+*.testlog
+*.tmp
+*.dll
+*.pdb
+*.json
+
 
