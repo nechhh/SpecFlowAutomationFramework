@@ -36,14 +36,10 @@ namespace SpecFlowAutomationFramework
         [BeforeScenario]
         public void BeforeScenario(ScenarioContext scenarioContext)
         {
-            string browserType = _configuration?.GetValue<string>("WebDriver:BrowserType") ?? "chrome";
-            IWebDriver driver = DriverFactory.GetDriver(browserType, _configuration);
-            driver.Manage().Window.Maximize();
+            IWebDriver driver = DriverFactory.GetDriver(_configuration);
             _container.RegisterInstanceAs<IWebDriver>(driver);
 
-            // The feature name can be manually specified or derived in a different way
-            string featureName = "YourFeatureName";
-            ExtentReport.StartFeature(featureName);
+            ExtentReport.StartFeature("YourFeatureName"); // Modify as needed
             ExtentReport.StartScenario(scenarioContext.ScenarioInfo.Title);
         }
 

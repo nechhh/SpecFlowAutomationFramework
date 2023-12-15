@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SpecFlowObsoleteCodeBehindFiles Remove="Features\FacebookLogin.feature.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="BoDi" Version="1.5.0" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="ExtentReports" Version="5.0.2" />
