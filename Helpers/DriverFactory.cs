@@ -20,27 +20,50 @@ namespace SpecFlowAutomationFramework.Utility
             EdgeOptions.AddArguments("--disable-notifications", "--window-size=1920,1080");
         }
 
-        public static IWebDriver GetDriver(string browserType, IConfiguration configuration)
+        public static IWebDriver GetDriver(IConfiguration configuration)
         {
             if (configuration == null)
             {
                 throw new ArgumentNullException(nameof(configuration), "Configuration cannot be null.");
             }
 
+            string browserType = configuration.GetValue<string>("WebDriver:BrowserType") ?? "chrome";
             string driverPath = configuration.GetValue<string>("WebDriver:DriverPath") ?? "defaultPath";
+            string url = configuration.GetValue<string>("WebDriver:Url");
+
+            IWebDriver driver;
 
             switch (browserType.ToLower())
             {
                 case "firefox":
-                    return new FirefoxDriver(driverPath, FirefoxOptions);
+                    driver = new FirefoxDriver(driverPath, FirefoxOptions);
+                    break;
 
                 case "edge":
-                    return new EdgeDriver(driverPath, EdgeOptions);
+                    driver = new EdgeDriver(driverPath, EdgeOptions);
+                    break;
 
                 case "chrome":
                 default:
-                    return new ChromeDriver(driverPath, ChromeOptions);
+                    AddChromeSpecificOptions(ChromeOptions, configuration);
+                    driver = new ChromeDriver(driverPath, ChromeOptions);
+                    break;
             }
+
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl(url);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(configuration.GetValue<int>("WebDriver:ImplicitWait"));
+
+            return driver;
+        }
+
+        private static void AddChromeSpecificOptions(ChromeOptions options, IConfiguration configuration)
+        {
+            if (configuration.GetValue<bool>("WebDriver:Headless"))
+            {
+                options.AddArguments("--headless");
+            }
+            // Add other Chrome-specific settings here
         }
     }
 }

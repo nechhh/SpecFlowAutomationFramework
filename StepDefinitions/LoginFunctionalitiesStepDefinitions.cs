@@ -21,7 +21,7 @@ public class LoginFunctionalitiesStepDefinitions
     [Given(@"User open the browser and launch HRMS application")]
     public void GivenUserOpenTheBrowserAndLaunchHRMSApplication()
     {
-        _driver.Navigate().GoToUrl(_configuration["SyntaxHRM:Url"]);
+     //   _driver.Navigate().GoToUrl(_configuration["SyntaxHRM:Url"]);
     }
 
     [When(@"user enters valid email and valid password")]
