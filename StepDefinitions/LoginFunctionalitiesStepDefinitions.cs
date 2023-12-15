@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
-using NUnit.Framework; // Ensure you have NUnit framework for assertions
+using NUnit.Framework;
+using SpecFlowAutomationFramework.Helpers; // Ensure you have NUnit framework for assertions
 
 [Binding]
 public class LoginFunctionalitiesStepDefinitions
@@ -29,20 +30,19 @@ public class LoginFunctionalitiesStepDefinitions
         string username = _configuration["SyntaxHRM:Username"];
         string password = _configuration["SyntaxHRM:Password"];
 
-        _loginPage.EnterUsername(username);
-        _loginPage.EnterPassword(password);
+        CommonActions.EnterText(_driver, _loginPage.usernameTxBox, username);
+        CommonActions.EnterText(_driver, _loginPage.passwordTxBox, password);
     }
 
     [When(@"click on login button")]
     public void WhenClickOnLoginButton()
     {
-        _loginPage.ClickLogin();
+        CommonActions.ClickElement(_driver, _loginPage.loginBtn);
     }
 
     [Then(@"user is logged in successfully into the application")]
     public void ThenUserIsLoggedInSuccessfullyIntoTheApplication()
     {
-        // The AssertLoggedIn method now performs the assertion internally
-        _loginPage.AssertLoggedIn();
+        CommonAsserts.AssertElementPresent(_driver, _loginPage.welcomeMessage);
     }
 }
