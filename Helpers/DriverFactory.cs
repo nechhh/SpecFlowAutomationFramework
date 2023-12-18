@@ -3,7 +3,6 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace SpecFlowAutomationFramework.Utility
 {

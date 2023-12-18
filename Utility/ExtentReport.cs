@@ -2,8 +2,6 @@
 using AventStack.ExtentReports.Reporter;
 using OpenQA.Selenium;
 using AventStack.ExtentReports.Gherkin.Model;
-using System;
-using System.IO;
 
 namespace SpecFlowAutomationFramework.Utility
 {
