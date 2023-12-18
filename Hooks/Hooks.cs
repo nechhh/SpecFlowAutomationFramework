@@ -1,6 +1,4 @@
-﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.Gherkin.Model;
-using BoDi;
+﻿using BoDi;
 using OpenQA.Selenium;
 using Microsoft.Extensions.Configuration;
 using SpecFlowAutomationFramework.Utility;

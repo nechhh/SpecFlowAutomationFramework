@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
 
 namespace SpecFlowAutomationFramework.Helpers
@@ -8,28 +8,28 @@ namespace SpecFlowAutomationFramework.Helpers
         // Asserts that the current page's title matches the expected title.
         public static void AssertTitle(IWebDriver driver, string expectedTitle)
         {
-            Assert.AreEqual(expectedTitle, driver.Title, "The page title does not match the expected title.");
+            ClassicAssert.AreEqual(expectedTitle, driver.Title, "The page title does not match the expected title.");
         }
 
         // Asserts that a specific element's text matches the expected text.
         public static void AssertElementText(IWebDriver driver, By locator, string expectedText)
         {
             var actualText = driver.FindElement(locator).Text;
-            Assert.AreEqual(expectedText, actualText, "The text of the element does not match the expected text.");
+            ClassicAssert.AreEqual(expectedText, actualText, "The text of the element does not match the expected text.");
         }
 
         // Asserts that an element is present on the page.
         public static void AssertElementPresent(IWebDriver driver, By locator)
         {
             var element = driver.FindElement(locator);
-            Assert.IsNotNull(element, "Expected element is not present on the page.");
+            ClassicAssert.IsNotNull(element, "Expected element is not present on the page.");
         }
 
         // Asserts that an element is visible on the page.
         public static void AssertElementVisible(IWebDriver driver, By locator)
         {
             var element = driver.FindElement(locator);
-            Assert.IsTrue(element.Displayed, "Expected element is not visible on the page.");
+            ClassicAssert.IsTrue(element.Displayed, "Expected element is not visible on the page.");
         }
 
         // Add more assertion methods as needed.
