@@ -54,13 +54,7 @@ public class LoginFunctionalitiesStepDefinitions
         CommonAsserts.AssertElementPresent(_driver, _loginPage.welcomeMessage);
     }
 
-    //[Then(@"user sees ""([^""]*)""")]
-    //    public void ThenUserSees(string outcome)
-    //    {
-    //    CommonActions.EnterText(_driver, _loginPage.WelcomeMesage, outcome);
-    //    CommonActions.EnterText(_driver, _loginPage.loginErrorMes, outcome);
 
-    //}
 
 
 }

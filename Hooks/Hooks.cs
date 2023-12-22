@@ -36,6 +36,7 @@ namespace SpecFlowAutomationFramework
         {
             IWebDriver driver = DriverFactory.GetDriver(_configuration);
             _container.RegisterInstanceAs<IWebDriver>(driver);
+           
 
             ExtentReport.StartFeature("YourFeatureName"); // Modify as needed
             ExtentReport.StartScenario(scenarioContext.ScenarioInfo.Title);
