@@ -39,10 +39,28 @@ public class LoginFunctionalitiesStepDefinitions
     {
         CommonActions.ClickElement(_driver, _loginPage.loginBtn);
     }
+    [When(@"user enters valid ""([^""]*)"" and valid ""([^""]*)""")]
+    public void WhenUserEntersValidAndValid(string username, string password)
+    {
+        CommonActions.EnterText(_driver, _loginPage.usernameTxBox, username);
+        CommonActions.EnterText(_driver, _loginPage.passwordTxBox, password);
+    }
+
+
 
     [Then(@"user is logged in successfully into the application")]
     public void ThenUserIsLoggedInSuccessfullyIntoTheApplication()
     {
         CommonAsserts.AssertElementPresent(_driver, _loginPage.welcomeMessage);
     }
+
+    //[Then(@"user sees ""([^""]*)""")]
+    //    public void ThenUserSees(string outcome)
+    //    {
+    //    CommonActions.EnterText(_driver, _loginPage.WelcomeMesage, outcome);
+    //    CommonActions.EnterText(_driver, _loginPage.loginErrorMes, outcome);
+
+    //}
+
+
 }
