@@ -9,16 +9,16 @@ Scenario: Valid Admin login
 	And click on login button
 	Then user is logged in successfully into the application
 
-	#@smoke @scenarioOutline
-	#Scenario Outline: Login with multiple credentials using Scenario Outline
-	##Given User open the browser and launch HRMS application
-	#When user enters valid "<username>" and valid "<password>"
-	#And click on login button
-	#Then  user sees "<outcome>"
-	#
-	#Examples: 
-	#| username | password    | outcome |
-	#| ADMIN    | Hum@nhrm123 |success  |
-	#| admin    | Hum@nhrm123 |success  |
-	#| admin    | Hum@nhrm123 |success  |
+	@smoke @scenarioOutline
+	Scenario Outline: Login with multiple credentials using Scenario Outline
+	#Given User open the browser and launch HRMS application
+	When user enters valid "<username>" and valid "<password>"
+	And click on login button
+	Then  user sees "<outcome>"
+	
+	Examples: 
+	| username | password    | outcome |
+	| ADMIN    | Hum@nhrm123 |success  |
+	| admin    | Hum@nhrm123 |success  |
+	| admin    | Hum@nhrm123 |success  |
 
