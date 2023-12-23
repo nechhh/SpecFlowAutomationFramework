@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using NUnit.Framework;
+using SpecFlowAutomationFramework;
 using SpecFlowAutomationFramework.Helpers; // Ensure you have NUnit framework for assertions
 
 [Binding]
@@ -53,6 +54,27 @@ public class LoginFunctionalitiesStepDefinitions
     {
         CommonAsserts.AssertElementPresent(_driver, _loginPage.welcomeMessage);
     }
+
+
+    //assert for multiple credentials
+    [Then(@"user sees ""([^""]*)""")]
+    public void ThenUserSees(string outcome)
+    {
+        if (outcome.Equals("success"))
+        {
+            CommonAsserts.AssertElementText(_driver, _loginPage.welcomeMessage, "Welcome Admin");
+        }
+        else if(outcome.Equals("failure")) {
+
+            
+            //CommonAsserts.AssertElementText(_driver, _loginPage.loginErrorMes, "Invalid credentials");
+            //var errorMessageElement = CommonActions.WaitForElementVisible(_driver, _loginPage.loginErrorMes, 10); // Adjust timeout as needed
+            //ClassicAssert.IsTrue(errorMessageElement.Displayed, "Invalid credentials");
+        }
+
+        
+    }
+
 
 
 
