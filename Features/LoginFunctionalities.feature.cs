@@ -104,47 +104,6 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with multiple credentials using Scenario Outline")]
-        [NUnit.Framework.CategoryAttribute("smoke")]
-        [NUnit.Framework.CategoryAttribute("scenarioOutline")]
-        [NUnit.Framework.TestCaseAttribute("ADMIN", "Hum@nhrm123", null)]
-        [NUnit.Framework.TestCaseAttribute("admin", "Hum@nhrm123", null)]
-        [NUnit.Framework.TestCaseAttribute("jason", "Hum@nhrm123", null)]
-        public void LoginWithMultipleCredentialsUsingScenarioOutline(string username, string password, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "smoke",
-                    "scenarioOutline"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("username", username);
-            argumentsOfScenario.Add("password", password);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with multiple credentials using Scenario Outline", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
- this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 15
- testRunner.When(string.Format("user enters valid \"{0}\" and valid \"{1}\"", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 16
- testRunner.And("click on login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
     }
 }
 #pragma warning restore
