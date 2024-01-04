@@ -2,7 +2,7 @@
 
 A short summary of the feature
 
-@smoke 
+@smoke @login
 Scenario: Valid Admin login
 	#Given User open the browser and launch HRMS application
 	When user enters valid email and valid password
